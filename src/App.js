@@ -15,6 +15,7 @@ import {
   Pyramid,
   Customers,
   Kanban,
+  Line,
   Area,
   Bar,
   Pie,
@@ -47,10 +48,12 @@ const App = () => {
           {/*  sidebar  */}
           {activeMenu ? (
             <div className="sidebar w-72 fixed  dark:bg-secondary-dark-bg bg-white">
-              sidebar
+              <Sidebar />
             </div>
           ) : (
-            <div className="w-0 dark:bg-secondary-dark-bg">sidebar w-0</div>
+            <div className="w-0 dark:bg-secondary-dark-bg">
+              <Sidebar />
+            </div>
           )}
           {/*  navbar  */}
           <div
@@ -60,35 +63,35 @@ const App = () => {
             `}
           >
             <div className="navbar fixed md:static bg-main-bg dark:bg-main-dark-bg w-full border-red-500">
-              navbar
+              <Navbar />
             </div>
           </div>
           <div>
             <Routes>
               {/* Dashboard  */}
-              <Route path="/" element="Ecommerce" />
-              <Route path="/ecommerce" element="Ecommerce" />
+              <Route path="/" element={<Ecommerce />} />
+              <Route path="/ecommerce" element={<Ecommerce />} />
 
               {/* Dashboard  */}
-              <Route path="/orders" element="Orders" />
-              <Route path="/employees" element="Employees" />
-              <Route path="/customers" element="Customers" />
+              <Route path="/orders" element={<Orders />} />
+              <Route path="/employees" element={<Employees />} />
+              <Route path="/customers" element={<Customers />} />
 
               {/* Apps  */}
-              <Route path="/calendar" element="Calendar" />
-              <Route path="/kanban" element="Kanban" />
-              <Route path="/editor" element="Editor" />
-              <Route path="/color-picker" element="ColorPicker" />
+              <Route path="/calendar" element={<Calendar />} />
+              <Route path="/kanban" element={<Kanban />} />
+              <Route path="/editor" element={<Editor />} />
+              <Route path="/color-picker" element={<ColorPicker />} />
 
               {/* Charts  */}
-              <Route path="/line" element="Line" />
-              <Route path="/area" element="Area" />
-              <Route path="/bar" element="Bar" />
-              <Route path="/pie" element="Pie" />
-              <Route path="/financial" element="Financial" />
-              <Route path="/color-mapping" element="Color-mapping" />
-              <Route path="/pyramid" element="Pyramid" />
-              <Route path="/stacked" element="Stacked" />
+              <Route path="/line" element={<Line />} />
+              <Route path="/area" element={<Area />} />
+              <Route path="/bar" element={<Bar />} />
+              <Route path="/pie" element={<Pie />} />
+              <Route path="/financial" element={<Financial />} />
+              <Route path="/color-mapping" element={<ColorMapping />} />
+              <Route path="/pyramid" element={<Pyramid />} />
+              <Route path="/stacked" element={<Stacked />} />
             </Routes>
           </div>
         </div>
