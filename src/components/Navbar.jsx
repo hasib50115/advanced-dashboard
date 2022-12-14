@@ -10,6 +10,7 @@ import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 import avatar from '../data/avatar.jpg';
 import { Cart, Chat, Notification, UserProfile } from '.';
 import { useStateContext } from '../contexts/ContextProvider';
+import { userProfileData } from './../data/dummy';
 
 const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
   <TooltipComponent content={title} position="BottomCenter">
@@ -30,7 +31,8 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
 );
 
 const Navbar = () => {
-  const { activeMenu, setActiveMenu } = useStateContext();
+  const { activeMenu, setActiveMenu, isClicked, setIsClicked, handleClick } =
+    useStateContext();
 
   return (
     <div className="flex justify-between p-2 md:mx-6 relative">
@@ -41,10 +43,10 @@ const Navbar = () => {
         icon={<AiOutlineMenu />}
       />
 
-      <div className="flex" style={{ border: '1px solid red' }}>
+      <div className="flex">
         <NavButton
           title="Cart"
-          customFunc={() => handleClic('cart')}
+          customFunc={() => handleClick('cart')}
           color="blue"
           icon={<FiShoppingCart />}
         />
@@ -52,7 +54,7 @@ const Navbar = () => {
         <NavButton
           title="Chat"
           dotColor="#03c9d7"
-          customFunc={() => handleClic('chat')}
+          customFunc={() => handleClick('chat')}
           color="blue"
           icon={<BsChatLeft />}
         />
@@ -60,7 +62,7 @@ const Navbar = () => {
         <NavButton
           title="Notifications"
           dotColor="#03c9d7"
-          customFunc={() => handleClic('notification')}
+          customFunc={() => handleClick('notification')}
           color="blue"
           icon={<RiNotification3Line />}
         />
@@ -84,6 +86,11 @@ const Navbar = () => {
             <MdKeyboardArrowDown className="text-gray-400 text-14" />
           </div>
         </TooltipComponent>
+
+        {isClicked.cart && <Cart />}
+        {isClicked.chat && <Chat />}
+        {isClicked.notification && <Notification />}
+        {isClicked.userProfile && <UserProfile />}
       </div>
     </div>
   );
