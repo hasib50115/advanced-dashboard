@@ -25,12 +25,16 @@ import {
   Editor,
 } from './pages';
 
+import { useStateContext } from './contexts/ContextProvider';
+
 const App = () => {
-  const activeMenu = true;
+  const { activeMenu } = useStateContext();
+
   return (
     <div>
       <BrowserRouter>
         <div className="flex relative dark:bg-main-dark-bg">
+          {/*  settings icon - at bottom-right corner  */}
           <div className="fixed right-4 bottom-4" style={{ zIndex: '1000' }}>
             <TooltipComponent content="Settings" position="Top">
               <button
@@ -72,7 +76,7 @@ const App = () => {
               <Route path="/" element={<Ecommerce />} />
               <Route path="/ecommerce" element={<Ecommerce />} />
 
-              {/* Dashboard  */}
+              {/* Pages  */}
               <Route path="/orders" element={<Orders />} />
               <Route path="/employees" element={<Employees />} />
               <Route path="/customers" element={<Customers />} />
